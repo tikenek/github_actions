@@ -6,7 +6,7 @@ provider "aws" {
  terraform {
    backend "s3" {
      bucket = "tynaresen"
-     key    = "path/to/my/key"
+     key    = "default-infrastructure"
      region = "us-east-1"
    }
  }
