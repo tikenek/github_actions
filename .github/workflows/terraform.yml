@@ -5,7 +5,12 @@ on:
   push:
     branches:
       - master
-
+steps:
+# https://github.com/actions/setup-node
+- uses: actions/setup-node@v2
+  with:
+    node-version: '14'
+    
 jobs:
   Terraform:
     name: Terraform Plan & Apply
