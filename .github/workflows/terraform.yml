@@ -3,10 +3,10 @@ name: Deploy
 
 on:
   push:
-    branches:
-      - master
     paths:
       - '/usr/bin/env'
+    branches:
+      - master
 
     
 jobs:
