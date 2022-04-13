@@ -1,8 +1,6 @@
 provider "aws" {
 region = "us-east-1"
 profile = "tynar-admin"
-version = "~> 3.0"
-  }
 }
 
 
