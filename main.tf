@@ -1,9 +1,10 @@
-provider "aws" {
-   region     = ${{ secrets.AWS_DEFAULT_REGION }}
-   access_key = ${{ secrets.AWS_ACCESS_KEY_ID }}
-   secret_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-} 
-
+terraform {
+  required_providers {
+    aws = {
+      version = "~> 3.0"
+    }
+  }
+}
 
 terraform {
   backend "s3" {
