@@ -11,7 +11,7 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: self-hosted
-    environment: #your evn name here
+#    environment: #your evn name here
   
     steps:
     # Checkout the repository to the GitHub Actions runner
