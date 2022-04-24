@@ -1,7 +1,10 @@
 name: 'Terraform-apply'
 
-#on:
-#  push:
+on:
+  push:
+    branches:
+      - master
+      
 #    paths:
 #    - 'your folder's name here/**'
 #    - '.github/workflows/terraform.yml'
