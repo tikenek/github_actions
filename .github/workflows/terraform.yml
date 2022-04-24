@@ -93,6 +93,7 @@ jobs:
       # On push to master, build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
       id: apply
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
