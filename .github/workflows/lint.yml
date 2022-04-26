@@ -1,0 +1,38 @@
+name: lint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  checks:
+    runs-on: self-hosted
+#    environment:  #Here is the name of your environment
+    
+    steps:
+    #Checkout the code
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+      # Install nodejs
+    - uses: actions/setup-node@v2
+      with:
+          node-version: '14'
+      with:
+        submodules: true
+        
+        
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+        
+        
+    - name: Run linters
+      uses: golangci/golangci-lint-action@v3.1.0
+      with:
+        version: v1.45
