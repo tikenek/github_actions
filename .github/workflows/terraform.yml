@@ -84,10 +84,7 @@ jobs:
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
       
-    - name: Terraform Show
-      id: show
-      run: terraform show -json tfplan.binary | jq '.' > tfplan.json
-
+   
     - name: Set up Python 3.8
       uses: actions/setup-python@v1
       with:
