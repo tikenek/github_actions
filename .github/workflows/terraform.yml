@@ -68,7 +68,6 @@ jobs:
       id: validate
       run: terraform validate -no-color
       
-    # Checkov will scan and make a static analysis
     - name: Test with Checkov
       id: checkov
       uses: bridgecrewio/checkov-action@master
