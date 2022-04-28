@@ -67,7 +67,6 @@ jobs:
     - name: Terraform Validate
       id: validate
       run: terraform validate -no-color
-      
     - name: Test with Checkov
       id: checkov
       uses: bridgecrewio/checkov-action@master
