@@ -36,21 +36,27 @@ jobs:
     - uses: actions/setup-node@v2
       with:
           node-version: '14'
-          
-    #Installand set up Go      
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.18
-        
+  
     #Will run linters and search for possible errors
-    - name: Run linters
-      uses: actions/setup-go@v2
-    - name: golangci-lint
-      uses: golangci/golangci-lint-action@v2
+    - uses: actions/cache@v2
+      name: Cache plugin dir
       with:
-        version: latest
-        skip-go-installation: true
+        path: ~/.tflint.d/plugins
+        key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+
+    - uses: terraform-linters/setup-tflint@v1
+      name: Setup TFLint
+      with:
+        tflint_version: v0.29.0
+
+    - name: Show version
+      run: tflint --version
+
+    - name: Init TFLint
+      run: tflint --init
+
+    - name: Run TFLint
+      run: tflint -f compact
         
     # Install Terraform CLI and configure the Terraform CLI configuration file
     - name: Terraform Setup
