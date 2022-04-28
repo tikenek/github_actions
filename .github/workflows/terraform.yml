@@ -67,20 +67,21 @@ jobs:
     - name: Terraform Validate
       id: validate
       run: terraform validate -no-color
+      
+    #Checkov will scan and make a static analysis
+    - name: Test with Checkov
+      id: checkov
+      uses: bridgecrewio/checkov-action@master
+      with:
+        directory: terraform
+       soft_fail: true
   
     # Evaluates and generates an execution plan for Terraform
     - name: Terraform Plan
       id: plan
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
-    
-    #Checkov will scan and make a static analysis
-    - name: Run Checkov action
-      id: checkov
-      uses: bridgecrewio/checkov-action@master
-      with:
-        directory: terraform/
-        soft_fail: true
+  
         
     - name: Update Pull Request
       uses: actions/github-script@0.9.0
