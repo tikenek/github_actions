@@ -45,9 +45,12 @@ jobs:
         
     #Will run linters and search for possible errors
     - name: Run linters
-      uses: golangci/golangci-lint-action@v3
+       uses: actions/setup-go@v2
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v2
       with:
-        version: v1.45  
+        version: latest
+        skip-go-installation: true
         
     # Install Terraform CLI and configure the Terraform CLI configuration file
     - name: Terraform Setup
