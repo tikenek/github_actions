@@ -45,7 +45,7 @@ jobs:
         
     #Will run linters and search for possible errors
     - name: Run linters
-       uses: actions/setup-go@v2
+      uses: actions/setup-go@v2
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v2
       with:
