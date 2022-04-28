@@ -77,14 +77,6 @@ jobs:
       id: validate
       run: terraform validate -no-color
       
-      
-    #Checkov will scan and make a static analysis
-    - name: Run Checkov action
-      id: checkov
-      uses: bridgecrewio/checkov-action@master
-      with:
-        directory: terraform/
-        soft_fail: true
   
     # Evaluates and generates an execution plan for Terraform
     - name: Terraform Plan
