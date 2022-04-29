@@ -84,12 +84,15 @@ jobs:
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
       
-    - name: Run Bridgecrew 
-      id: Bridgecrew
-      uses: bridgecrewio/bridgecrew-action@master
+      	    #Checkov will scan and make a static analysis
+            
+	  - name: Run Checkov action
+	     id: checkov
+      uses: bridgecrewio/checkov-action@master
       with:
-        api-key: ${{ secrets.BC_API_KEY }}
         directory: terraform/
+        soft_fail: true
+
    
     - name: Update Pull Request
       uses: actions/github-script@0.9.0
