@@ -84,6 +84,12 @@ jobs:
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
       
+    - name: Run Bridgecrew 
+      id: Bridgecrew
+      uses: bridgecrewio/bridgecrew-action@master
+      with:
+        api-key: ${{ secrets.BC_API_KEY }}
+        directory: terraform/
    
     - name: Update Pull Request
       uses: actions/github-script@0.9.0
