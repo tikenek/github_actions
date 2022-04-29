@@ -36,27 +36,18 @@ jobs:
     - uses: actions/setup-node@v2
       with:
           node-version: '14'
-  
-    #Will run linters and search for possible errors
-    - uses: actions/cache@v2
-      name: Cache plugin dir
+	  
+    #Install and set up Go      
+    - name: Set up Go
+      uses: actions/setup-go@v3
       with:
-        path: ~/.tflint.d/plugins
-        key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
-
-    - uses: terraform-linters/setup-tflint@v1
-      name: Setup TFLint
+        go-version: 1.18
+        
+    #Run linters and search for possible errors
+    - name: Run linters
+      uses: golangci/golangci-lint-action@v3.1.0
       with:
-        tflint_version: v0.29.0
-
-    - name: Show version
-      run: tflint --version
-
-    - name: Init TFLint
-      run: tflint --init
-
-    - name: Run TFLint
-      run: tflint -f compact
+        version: v1.45  
         
     # Install Terraform CLI and configure the Terraform CLI configuration file
     - name: Terraform Setup
@@ -83,16 +74,6 @@ jobs:
       id: plan
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
-      
- 
-	    #Checkov will scan and make a static analysis
-    - name: Run Checkov action
-	    id: checkov
-	    uses: bridgecrewio/checkov-action@master
-	    with:
-	      directory: terraform/
-	      soft_fail: true
-
 
     - name: Update Pull Request
       uses: actions/github-script@0.9.0
