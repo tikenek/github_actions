@@ -2,7 +2,8 @@ on:
   workflow_dispatch:
 
 jobs:
+  reusable_workflow_job:
+    runs-on: self-hosted
   job1:
     uses: tikenek/github_actions/.github/workflows/terraform-template.yml@v1
-    
     
