@@ -1,13 +1,25 @@
-name: Terraform test reusable
+name: Sync Fork
 
-on: 
+on:
   workflow_dispatch:
+ 
   
 jobs:
-  my_job:
-    name: test reusable workflow
-    uses: tikenek/github_actions/.github/workflows/terraform-template.yml@v1
-    secrets:
-      env_aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
-      env_aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-      env_github_token: ${{secrets.GITHUB_TOKEN}}
+  sync:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      
+      - name: test terraform apply workflow 
+        uses: tikenek/github_runners/.github/workflows/terraform.yml@v1
+        with:
+          # URL of gitHub public upstream repo
+         # upstream_repo: "https://github.com/actions/starter-workflows.git"
+          # Branch to merge from upstream (defaults to downstream branch)
+          upstream_branch: master #main
+          # Branch to merge into downstream
+          downstream_branch: master
+          # GitHub Bot token
+          token: ${{ secrets.GITHUB_TOKEN }}
