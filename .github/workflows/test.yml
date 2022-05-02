@@ -4,6 +4,10 @@ on:
 jobs:
   reusable_workflow_job:
     runs-on: self-hosted
+    
+    steps:
+      - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+      
   job1:
     uses: tikenek/github_actions/.github/workflows/terraform-template.yml@v1
     
