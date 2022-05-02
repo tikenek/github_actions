@@ -15,14 +15,10 @@ on:
         required: true
       env_aws_secret_access_key:
         required: true
-      env_github_token:
-        required: true
         
 env:
     AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
     AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    AWS_SESSION_TOKEN: ${{secrets.AWS_SESSION_TOKEN}}
-
 
  
 jobs:
