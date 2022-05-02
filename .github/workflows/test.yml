@@ -1,19 +1,15 @@
 name: Sync Fork
 
 on:
-  workflow_dispatch:
+  workflow_call:
  
   
 jobs:
-  sync:
-    runs-on: self-hosted
-
+  reusable_workflow_job:
+    runs-on: slef-hosted
+    #environment: production
     steps:
-      - uses: actions/checkout@v2
-      
-      
-      - name: test terraform apply workflow 
-        uses: tikenek/github_runners/.github/workflows/terraform.yml@v1
+      - uses: ./.github/workflows/terraform.yml@v1
         with:
           # URL of gitHub public upstream repo
          # upstream_repo: "https://github.com/actions/starter-workflows.git"
@@ -23,3 +19,4 @@ jobs:
           downstream_branch: master
           # GitHub Bot token
           token: ${{ secrets.GITHUB_TOKEN }}
+
