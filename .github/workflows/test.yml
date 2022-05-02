@@ -5,7 +5,7 @@ on:
   
 
 jobs: 
-   uses: tikenek/terraform-adding-users/.github/workflows/terraform-template-apply.yml@v1
+   uses: tikenek/github_actions/.github/workflows/terraform-template.yml
    secrets:
      env_aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
      env_aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
