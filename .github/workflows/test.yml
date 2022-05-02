@@ -9,7 +9,7 @@ jobs:
     runs-on: self-hosted
     #environment: production
     steps:
-      - uses: ./.github/workflows/terraform.yml@v1
+      - uses: tikenek/github_actions/.github/workflows/terraform-template.yml@v1
         with:
           # URL of gitHub public upstream repo
          # upstream_repo: "https://github.com/actions/starter-workflows.git"
