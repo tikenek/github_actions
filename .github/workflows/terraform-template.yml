@@ -1,15 +1,13 @@
 name: 'Terraform apply template'
 
+
 on:
   workflow_call:
     inputs:
-      path:
-        description: 'Specifies the path of the root terraform module.'
-        required: true
+      runs-on:
+        description: Run test
         type: string
-#    secrets:
-#      env:
-#        required: true 
+        default: ubuntu-latest
     secrets:
      env_aws_access_key_id:
         required: true
