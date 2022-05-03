@@ -10,11 +10,7 @@ on:
 #    secrets:
 #      env:
 #        required: true 
-     secrets:
-      env_aws_access_key_id:
-        required: true
-      env_aws_secret_access_key:
-        required: true
+
         
 env:
     AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
